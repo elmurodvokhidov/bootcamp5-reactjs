@@ -1,0 +1,1 @@
+# Mavzu: "To do list" loyihasini boshlang'ich ko'rinishi va funksiyasi & "delete" metodi 
