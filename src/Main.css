@@ -1,0 +1,14 @@
+* {
+    padding: 0;
+    margin: 0;
+    text-decoration: none;
+    font-family: sans-serif;
+}
+
+.navbar {
+    background-color: blue;
+}
+
+.generalBtn {
+    font-size: 25px;
+}
