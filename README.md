@@ -1,0 +1,1 @@
+# Mavzu: Form oynadan ma'lumot olish va uni ekranga chiqarish!
