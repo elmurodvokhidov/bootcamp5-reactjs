@@ -1,0 +1,213 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    list-style: none;
+    text-decoration: none;
+    color: #2A2A2A;
+    /* font-family: Cerebri Sans Pro; */
+}
+
+.flexbox,
+.navbar :where(ul, li, a, center, span, aside, .search, #fav_count, .nav_footer, button) {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.App {
+    max-width: 1920px;
+    margin: auto;
+}
+
+.navbar>ul {
+    padding: 12px 0;
+    gap: 20px;
+    background: #2A2A2A;
+}
+
+.navbar>ul a {
+    color: #fff;
+    font-size: 12px;
+    font-weight: 600;
+}
+
+.navbar>ul li:first-child a {
+    gap: 8px;
+    padding-right: 20px;
+    border-right: 1px solid rgba(255, 255, 255, 0.50);
+}
+
+.navbar center {
+    /* gap: 145px; */
+    justify-content: space-between;
+    padding: 22px 180px;
+    background: #FFF;
+    border-bottom: 1px solid rgba(42, 42, 42, 0.20);
+    box-shadow: 0px 1px 0px 0px #CECECE;
+}
+
+.navbar aside span {
+    margin: auto 35px;
+    color: #999;
+    font-size: 14px;
+    font-weight: 500;
+}
+
+.navbar .search {
+    width: 340px;
+    border-radius: 3px;
+    background: #F7F7F7;
+    font-size: 16px;
+    font-weight: 500;
+    gap: 10px;
+    justify-content: left;
+    padding: 6px 10px;
+}
+
+.navbar .search input {
+    border: none;
+    outline: none;
+    background-color: rgba(255, 255, 255, 0);
+}
+
+.navbar center>ul li {
+    gap: 10px;
+    padding: 0 20px;
+    font-size: 16px;
+    font-weight: 500;
+    border-right: 2px solid rgba(42, 42, 42, 0.20);
+}
+
+.navbar center>ul li:last-child {
+    border: none;
+}
+
+.fav_count_parent {
+    position: relative;
+}
+
+#fav_count {
+    position: absolute;
+    top: -5px;
+    right: 15px;
+    color: #FFF;
+    font-size: 10px;
+    font-weight: 800;
+    width: 14px;
+    height: 14px;
+    border-radius: 50px;
+    border: 1px solid #FFF;
+    background: #7FAD39;
+}
+
+.nav_footer {
+    justify-content: space-between;
+    padding: 20px 180px;
+    background: #FFF;
+    box-shadow: 0px 1px 0px 0px #CECECE;
+}
+
+.nav_footer :where(aside, ul) {
+    gap: 35px;
+}
+
+.nav_footer .select_categories {
+    gap: 10px;
+    padding: 18px 25px;
+    margin: 0 35px 0 0;
+    font-size: 12px;
+    font-weight: 800;
+    background: #F7F7F7;
+}
+
+.nav_footer ul a {
+    font-size: 16px;
+    font-weight: 500;
+    text-transform: uppercase;
+}
+
+.nav_footer .card_btn {
+    color: #FFF;
+    font-size: 12px;
+    font-weight: 800;
+    padding: 13px 14px;
+    background: #7FAD39;
+    border: none;
+    cursor: pointer;
+}
+
+#cart_count {
+    color: #fff;
+    margin: 0 3px;
+}
+
+a.active {
+    color: #7FAD39;
+}
+
+.sliderParent {
+    max-width: 100vw;
+    overflow: hidden;
+    /* padding: 30px 0; */
+    /* background: red; */
+}
+
+.sliderCard {
+    width: 370px;
+    height: 240px;
+    margin: 30px;
+    overflow: hidden;
+    position: relative;
+    border: 6px solid white;
+    background: #FFF;
+    box-shadow: 0px 3px 6px 0px rgba(0, 0, 0, 0.10);
+}
+
+.sliderCard img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    position: absolute;
+}
+
+.sliderCardBox {
+    position: absolute;
+    top: 20px;
+    padding: 18px;
+    background: #fff;
+}
+
+.sliderCard h2:nth-child(1) {
+    color: #7FAD39;
+    font-size: 14px;
+    font-weight: 800;
+    line-height: 24px;
+}
+
+.sliderCard h2:nth-child(2) {
+    color: #2A2A2A;
+    font-size: 16px;
+    font-weight: 800;
+    line-height: 24px;
+}
+
+.sliderCard h2:nth-child(3) {
+    color: #757575;
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 24px;
+}
+
+.sliderCard button {
+    position: absolute;
+    bottom: 14px;
+    right: 14px;
+    color: #FFF;
+    font-size: 14px;
+    font-weight: 800;
+    padding: 20px;
+    border: none;
+    text-transform: uppercase;
+    background: #7FAD39;
+}
