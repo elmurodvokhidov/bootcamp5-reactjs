@@ -1,1 +1,1 @@
-# Mavzu: React Router DOM / Takrorlash
+# Mavzu: React Slider / Fruits & Vegetables Project #started
