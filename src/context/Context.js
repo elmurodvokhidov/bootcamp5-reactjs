@@ -48,294 +48,45 @@ function ContextFunction({ children }) {
         },
     ]);
 
-    const [allProducts, setAllProducts] = useState([
-        {
-            id: 1,
-            img: "./img/s1.png",
-            status: true,
-            title: "Fresh organic apricot",
-            price: 15,
-            count: 0,
-            discount: 15,
-            top: true,
-        },
-        {
-            id: 2,
-            img: "./img/c2.png",
-            status: true,
-            title: "Cucumber",
-            price: 15,
-            count: 0,
-            discount: 15,
-        },
-        {
-            id: 3,
-            img: "./img/h1.png",
-            status: true,
-            title: "Hazelnuts filbert nut",
-            price: 15,
-            count: 0,
-            discount: 15,
-        },
-        {
-            id: 4,
-            img: "./img/r1.png",
-            status: true,
-            title: "raw broccoli",
-            price: 15,
-            count: 0,
-            discount: 15,
-        },
-        {
-            id: 5,
-            img: "./img/o1.png",
-            status: true,
-            title: "Organic quince",
-            price: 15,
-            count: 0,
-            discount: 15,
-            top: true,
-        },
-        {
-            id: 6,
-            img: "./img/redapple.png",
-            status: true,
-            title: "Red apple",
-            price: 15,
-            count: 0,
-            discount: 15,
-        },
-        {
-            id: 7,
-            img: "./img/capsicum-green.png",
-            status: true,
-            title: "capsicum-green",
-            price: 15,
-            count: 0,
-            discount: 15,
-        },
-        {
-            id: 8,
-            img: "./img/Pear fruit.png",
-            status: true,
-            title: "Pear fruit",
-            price: 15,
-            count: 0,
-            discount: 15,
-        },
-        {
-            id: 9,
-            img: "./img/Blueberry.png",
-            status: true,
-            title: "Blueberry",
-            price: 15,
-            count: 0,
-            discount: 15,
-            top: true,
-        },
-        {
-            id: 10,
-            img: "./img/Fresh raspberry.png",
-            status: true,
-            title: "Fresh raspberry",
-            price: 15,
-            count: 0,
-            discount: 15,
-        },
-        {
-            id: 11,
-            img: "./img/Ginger.png",
-            status: true,
-            title: "Ginger",
-            price: 15,
-            count: 0,
-            discount: 15,
-        },
-        {
-            id: 12,
-            img: "./img/Two fresh figs.png",
-            status: true,
-            title: "Two fresh figs",
-            price: 15,
-            count: 0,
-            discount: 15,
-            top: true,
-        },
-        {
-            id: 13,
-            img: "./img/Strawberry.png",
-            status: true,
-            title: "Strawberry",
-            price: 15,
-            count: 0,
-            discount: 15,
-        },
-        {
-            id: 14,
-            img: "./img/Eggplant.png",
-            status: true,
-            title: "Eggplant",
-            price: 15,
-            count: 0,
-            discount: 15,
-            top: true,
-        },
-        {
-            id: 15,
-            img: "./img/Egg.png",
-            status: true,
-            title: "Egg",
-            price: 15,
-            count: 0,
-            discount: 15,
-        },
-        {
-            id: 16,
-            img: "./img/s1.png",
-            status: true,
-            title: "Fresh organic apricot",
-            price: 15,
-            count: 0,
-            discount: 15,
-        },
-        {
-            id: 17,
-            img: "./img/c2.png",
-            status: true,
-            title: "Cucumber",
-            price: 15,
-            count: 0,
-            discount: 15,
-            top: true,
-        },
-        {
-            id: 18,
-            img: "./img/h1.png",
-            status: true,
-            title: "Hazelnuts filbert nut",
-            price: 15,
-            count: 0,
-            discount: 15,
-        },
-        {
-            id: 19,
-            img: "./img/r1.png",
-            status: true,
-            title: "raw broccoli",
-            price: 15,
-            count: 0,
-            discount: 15,
-            top: true,
-        },
-        {
-            id: 20,
-            img: "./img/o1.png",
-            status: true,
-            title: "Organic quince",
-            price: 15,
-            count: 0,
-            discount: 15,
-        },
-        {
-            id: 21,
-            img: "./img/redapple.png",
-            status: true,
-            title: "Red apple",
-            price: 15,
-            count: 0,
-            discount: 15,
-        },
-        {
-            id: 22,
-            img: "./img/capsicum-green.png",
-            status: true,
-            title: "capsicum-green",
-            price: 15,
-            count: 0,
-            discount: 15,
-            top: true,
-        },
-        {
-            id: 23,
-            img: "./img/Pear fruit.png",
-            status: true,
-            title: "Pear fruit",
-            price: 15,
-            count: 0,
-            discount: 15,
-        },
-        {
-            id: 24,
-            img: "./img/Blueberry.png",
-            status: true,
-            title: "Blueberry",
-            price: 15,
-            count: 0,
-            discount: 15,
-        },
-        {
-            id: 25,
-            img: "./img/Fresh raspberry.png",
-            status: true,
-            title: "Fresh raspberry",
-            price: 15,
-            count: 0,
-            discount: 15,
-            top: true,
-        },
-        {
-            id: 26,
-            img: "./img/Ginger.png",
-            status: true,
-            title: "Ginger",
-            price: 15,
-            count: 0,
-            discount: 15,
-        },
-        {
-            id: 27,
-            img: "./img/Two fresh figs.png",
-            status: true,
-            title: "Two fresh figs",
-            price: 15,
-            count: 0,
-            discount: 15,
-        },
-        {
-            id: 28,
-            img: "./img/Strawberry.png",
-            status: true,
-            title: "Strawberry",
-            price: 15,
-            count: 0,
-            discount: 15,
-        },
-        {
-            id: 29,
-            img: "./img/Eggplant.png",
-            status: true,
-            title: "Eggplant",
-            price: 15,
-            count: 0,
-            discount: 15,
-        },
-        {
-            id: 30,
-            img: "./img/Egg.png",
-            status: true,
-            title: "Egg",
-            price: 15,
-            count: 0,
-            discount: 15,
-            top: true,
-        },
-    ]);
+    // LocalStorage-dagi barcha mahsulotlar
+    const [allProducts, setAllProducts] = useState(
+        localStorage.getItem('allProducts') ? JSON.parse(localStorage.getItem('allProducts')) : []
+    );
+
+    function allProductsRefresh() {
+        setAllProducts(
+            localStorage.getItem('allProducts') ? JSON.parse(localStorage.getItem('allProducts')) : []
+        );
+    };
+
+    // Like page-dagi barcha mahsulotlar
+    const [likes, setLikes] = useState(
+        localStorage.getItem('likes') ? JSON.parse(localStorage.getItem('likes')) : []
+    );
+
+    function likeRefresh() {
+        setLikes(
+            localStorage.getItem('likes') ? JSON.parse(localStorage.getItem('likes')) : []
+        );
+    };
 
     const cartNavigate = useNavigate();
 
     // Cart function
     function cartBtn() {
         cartNavigate('cart');
+    };
+
+    // Like function
+    function likeFun(item) {
+        if (localStorage.getItem('likes')) {
+            localStorage.setItem('likes', JSON.stringify([
+                ...JSON.parse(localStorage.getItem('likes')), item
+            ]))
+        } else {
+            localStorage.setItem('likes', JSON.stringify([item]))
+        }
+        likeRefresh();
     };
 
     return (
@@ -345,6 +96,8 @@ function ContextFunction({ children }) {
             setCategoriesData,
             allProducts,
             setAllProducts,
+            likes,
+            likeFun,
         }}>
             {children}
         </ContextData.Provider>

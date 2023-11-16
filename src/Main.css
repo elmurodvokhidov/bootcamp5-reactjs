@@ -16,6 +16,8 @@ footer aside,
 .cardBtnGroup,
 .favBtn,
 .cardBtnGroup button,
+.bestValuesFooter,
+.bestValuesFooterBox,
 .navbar :where(ul, li, a, center, span, aside, .search, #fav_count, .nav_footer, button) {
     display: flex;
     align-items: center;
@@ -477,4 +479,109 @@ footer aside:last-child {
     font-size: 12px;
     font-weight: 800;
     line-height: 22px;
+}
+
+.bestValues {
+    padding: 0 30px;
+}
+
+.bestValuesWrapper {
+    display: flex;
+    gap: 30px;
+    justify-content: space-between;
+}
+
+.bestValueCard {
+    position: relative;
+    width: 377px;
+    height: 290px;
+    overflow: hidden;
+}
+
+.bestValueCard img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.bestValueCard .bestValueBox {
+    width: 140px;
+    position: absolute;
+    left: 20px;
+    bottom: 20px;
+}
+
+.bestValueBox :where(h1, h2) {
+    color: #2A2A2A;
+    font-size: 28px;
+    font-weight: 900;
+    line-height: 34px;
+    text-transform: capitalize;
+}
+
+.bestValueBox h2 {
+    font-weight: 100;
+}
+
+.shopNow {
+    width: 100%;
+    border: none;
+    margin: 30px 0 0;
+    color: #FFF;
+    font-size: 16px;
+    font-weight: 700;
+    padding: 20px;
+    cursor: pointer;
+    background: #2A2A2A;
+}
+
+.bestValuesFooter {
+    width: 100%;
+    height: 140px;
+    margin: 20px 0 0;
+    background-image: url('../public/img/Rectangle\ 33.png');
+}
+
+.bestValuesFooterBox {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    background: rgba(42, 42, 42, 0.40);
+}
+
+.bestValuesFooter h1 {
+    color: #FFF;
+    font-size: 24px;
+    font-weight: 900;
+    line-height: 34px;
+    text-transform: capitalize;
+}
+
+.bestValuesFooter button {
+    color: #FFF;
+    font-size: 14px;
+    font-weight: 900;
+    line-height: 34px;
+    padding: 0 30px;
+    cursor: pointer;
+    text-transform: uppercase;
+    border: 2px dashed #FFF;
+    background: rgba(127, 173, 57, 0.70);
+}
+
+.globalStyle {
+    padding: 50px 180px 150px;
+}
+
+.globalStyleWrapper {
+    display: grid;
+    grid-template-columns: repeat(4, auto);
+    justify-content: space-between;
+    gap: 50px;
+}
+
+.globalStyleWrapper .globalSliderCard {
+    margin: 0;
 }
