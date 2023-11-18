@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import AllProducts from '../tools/AllProducts';
+import Swal from 'sweetalert2';
 
 export const ContextData = React.createContext();
 
@@ -50,7 +52,7 @@ function ContextFunction({ children }) {
 
     // LocalStorage-dagi barcha mahsulotlar
     const [allProducts, setAllProducts] = useState(
-        localStorage.getItem('allProducts') ? JSON.parse(localStorage.getItem('allProducts')) : []
+        AllProducts() ? JSON.parse(localStorage.getItem('allProducts')) : []
     );
 
     function allProductsRefresh() {
@@ -70,6 +72,17 @@ function ContextFunction({ children }) {
         );
     };
 
+    // Basket page-dagi barcha mahsulotlar
+    const [basket, setBasket] = useState(
+        localStorage.getItem('basket') ? JSON.parse(localStorage.getItem('basket')) : []
+    );
+
+    function basketRefresh() {
+        setBasket(
+            localStorage.getItem('basket') ? JSON.parse(localStorage.getItem('basket')) : []
+        );
+    };
+
     const cartNavigate = useNavigate();
 
     // Cart function
@@ -79,15 +92,80 @@ function ContextFunction({ children }) {
 
     // Like function
     function likeFun(item) {
-        if (localStorage.getItem('likes')) {
-            localStorage.setItem('likes', JSON.stringify([
-                ...JSON.parse(localStorage.getItem('likes')), item
-            ]))
-        } else {
-            localStorage.setItem('likes', JSON.stringify([item]))
+        if ((likes.filter(element => element.id === item.id)).length === 0) {
+            if (localStorage.getItem('likes')) {
+                localStorage.setItem('likes', JSON.stringify([
+                    ...JSON.parse(localStorage.getItem('likes')), item
+                ]))
+            } else {
+                localStorage.setItem('likes', JSON.stringify([item]))
+            }
+        }
+        else {
+            localStorage.setItem('likes', JSON.stringify(
+                JSON.parse(localStorage.getItem('likes')).filter(element => element.id !== item.id)
+            ));
         }
         likeRefresh();
     };
+
+    // Increment function
+    function increment(id) {
+        localStorage.setItem('allProducts', JSON.stringify(
+            JSON.parse(localStorage.getItem('allProducts')).map(element => element.id === id ? { ...element, count: element.count + 1 } : element)
+        ));
+        allProductsRefresh();
+    };
+
+    // Decrement function
+
+    // Basket function
+    function basketFun(item) {
+        if ((basket.filter(element => element.id === item.id)).length === 0) {
+            if (localStorage.getItem('basket')) {
+                localStorage.setItem('basket', JSON.stringify([
+                    ...JSON.parse(localStorage.getItem('basket')), item
+                ]))
+            } else {
+                localStorage.setItem('basket', JSON.stringify([item]))
+            }
+            Swal.fire({
+                position: "top-end",
+                icon: "success",
+                title: "Your work has been saved",
+                showConfirmButton: false,
+                timer: 1500
+            });
+            basketRefresh();
+        }
+        else {
+            Swal.fire({
+                icon: "warning",
+                title: "Ushbu mahsulot allaqachon mavjud!",
+                showConfirmButton: false,
+                timer: 2000,
+            });
+        }
+    };
+
+    // Delete
+    // Swal.fire({
+    //     title: "Are you sure?",
+    //     text: "You won't be able to revert this!",
+    //     icon: "warning",
+    //     showCancelButton: true,
+    //     confirmButtonColor: "#3085d6",
+    //     cancelButtonColor: "#d33",
+    //     confirmButtonText: "Yes, delete it!"
+    //   }).then((result) => {
+    //     if (result.isConfirmed) {
+    //       Swal.fire({
+    //         title: "Deleted!",
+    //         text: "Your file has been deleted.",
+    //         icon: "success"
+    //       });
+    //     }
+    //   });
 
     return (
         <ContextData.Provider value={{
@@ -98,6 +176,9 @@ function ContextFunction({ children }) {
             setAllProducts,
             likes,
             likeFun,
+            increment,
+            basketFun,
+            basket,
         }}>
             {children}
         </ContextData.Provider>

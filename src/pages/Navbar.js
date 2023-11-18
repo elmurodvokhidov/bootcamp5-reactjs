@@ -3,7 +3,7 @@ import { Link, NavLink } from 'react-router-dom';
 import { ContextData } from "../context/Context";
 
 function Navbar() {
-    const { cartBtn, likes } = useContext(ContextData);
+    const { cartBtn, likes, basket } = useContext(ContextData);
     return (
         <div className="navbar">
             <ul>
@@ -239,7 +239,7 @@ function Navbar() {
                             </clipPath>
                         </defs>
                     </svg>
-                    CART <span id="cart_count">2</span>
+                    CART <span id="cart_count">{basket.length}</span>
                     <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none">
                         <g clipPath="url(#clip0_202_81)">
                             <path d="M5.83301 8.33325L9.99967 12.4999L14.1663 8.33325H5.83301Z" fill="white" />
