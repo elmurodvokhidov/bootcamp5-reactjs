@@ -90,6 +90,8 @@ function ContextFunction({ children }) {
         cartNavigate('cart');
     };
 
+    const [category, setCategory] = useState();
+
     // Like function
     function likeFun(item) {
         if ((likes.filter(element => element.id === item.id)).length === 0) {
@@ -111,32 +113,48 @@ function ContextFunction({ children }) {
 
     // Increment function
     function increment(id) {
+        if (window.location.pathname === '/' || window.location.pathname === '/product' || window.location.pathname === '/stores') {
+            localStorage.setItem('allProducts', JSON.stringify(
+                JSON.parse(localStorage.getItem('allProducts')).map(element => element.id === id && element.status ? { ...element, count: element.count + 1 } : element)
+            ));
+            allProductsRefresh();
+        }
+        else if (window.location.pathname === '/cart') {
+            localStorage.setItem('basket', JSON.stringify(
+                JSON.parse(localStorage.getItem('basket')).map(element => element.id === id && element.status ? { ...element, count: element.count + 1 } : element)
+            ));
+            basketRefresh();
+        }
+    };
+
+    // Decrement function
+    function decrement(id) {
         localStorage.setItem('allProducts', JSON.stringify(
-            JSON.parse(localStorage.getItem('allProducts')).map(element => element.id === id ? { ...element, count: element.count + 1 } : element)
+            JSON.parse(localStorage.getItem('allProducts')).map(element => element.id === id && element.status && element.count > 0 ? { ...element, count: element.count - 1 } : element)
         ));
         allProductsRefresh();
     };
 
-    // Decrement function
-
     // Basket function
     function basketFun(item) {
         if ((basket.filter(element => element.id === item.id)).length === 0) {
-            if (localStorage.getItem('basket')) {
-                localStorage.setItem('basket', JSON.stringify([
-                    ...JSON.parse(localStorage.getItem('basket')), item
-                ]))
-            } else {
-                localStorage.setItem('basket', JSON.stringify([item]))
+            if (item.status) {
+                if (localStorage.getItem('basket')) {
+                    localStorage.setItem('basket', JSON.stringify([
+                        ...JSON.parse(localStorage.getItem('basket')), item
+                    ]))
+                } else {
+                    localStorage.setItem('basket', JSON.stringify([item]))
+                }
+                Swal.fire({
+                    position: "top-end",
+                    icon: "success",
+                    title: "Your work has been saved",
+                    showConfirmButton: false,
+                    timer: 1500
+                });
+                basketRefresh();
             }
-            Swal.fire({
-                position: "top-end",
-                icon: "success",
-                title: "Your work has been saved",
-                showConfirmButton: false,
-                timer: 1500
-            });
-            basketRefresh();
         }
         else {
             Swal.fire({
@@ -177,8 +195,11 @@ function ContextFunction({ children }) {
             likes,
             likeFun,
             increment,
+            decrement,
             basketFun,
             basket,
+            category,
+            setCategory,
         }}>
             {children}
         </ContextData.Provider>

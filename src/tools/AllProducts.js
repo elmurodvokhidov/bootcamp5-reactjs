@@ -11,6 +11,7 @@ function AllProducts() {
             count: 0,
             discount: 15,
             top: true,
+            cat: 1,
         },
         {
             id: 2,
@@ -20,6 +21,7 @@ function AllProducts() {
             price: 20,
             count: 0,
             discount: 15,
+            cat: 2,
         },
         {
             id: 3,
@@ -29,6 +31,7 @@ function AllProducts() {
             price: 22,
             count: 0,
             discount: 15,
+            cat: 3,
         },
         {
             id: 4,
@@ -38,6 +41,7 @@ function AllProducts() {
             price: 19,
             count: 0,
             discount: 15,
+            cat: 2,
         },
         {
             id: 5,
@@ -48,6 +52,7 @@ function AllProducts() {
             count: 0,
             discount: 15,
             top: true,
+            cat: 3,
         },
         {
             id: 6,
@@ -57,6 +62,7 @@ function AllProducts() {
             price: 14,
             count: 0,
             discount: 15,
+            cat: 1,
         },
         {
             id: 7,
@@ -66,6 +72,7 @@ function AllProducts() {
             price: 30,
             count: 0,
             discount: 15,
+            cat: 2,
         },
         {
             id: 8,
@@ -75,6 +82,7 @@ function AllProducts() {
             price: 25,
             count: 0,
             discount: 15,
+            cat: 1,
         },
         {
             id: 9,
@@ -85,6 +93,7 @@ function AllProducts() {
             count: 0,
             discount: 15,
             top: true,
+            cat: 3,
         },
         {
             id: 10,
@@ -94,6 +103,7 @@ function AllProducts() {
             price: 28,
             count: 0,
             discount: 15,
+            cat: 3,
         },
         {
             id: 11,
@@ -103,6 +113,7 @@ function AllProducts() {
             price: 26,
             count: 0,
             discount: 15,
+            cat: 2,
         },
         {
             id: 12,
@@ -113,6 +124,7 @@ function AllProducts() {
             count: 0,
             discount: 15,
             top: true,
+            cat: 3,
         },
         {
             id: 13,
@@ -122,6 +134,7 @@ function AllProducts() {
             price: 27,
             count: 0,
             discount: 15,
+            cat: 1,
         },
         {
             id: 14,
@@ -132,6 +145,7 @@ function AllProducts() {
             count: 0,
             discount: 15,
             top: true,
+            cat: 2,
         },
         {
             id: 15,
@@ -141,6 +155,7 @@ function AllProducts() {
             price: 10,
             count: 0,
             discount: 15,
+            cat: 3,
         },
         {
             id: 16,

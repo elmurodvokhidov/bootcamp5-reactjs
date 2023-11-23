@@ -585,3 +585,12 @@ footer aside:last-child {
 .globalStyleWrapper .globalSliderCard {
     margin: 0;
 }
+
+#disabled {
+    opacity: .6;
+}
+
+.actionFilter {
+    margin: 0 0 40px;
+    /* background: red; */
+}

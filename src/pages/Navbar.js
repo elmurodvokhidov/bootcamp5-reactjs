@@ -204,7 +204,7 @@ function Navbar() {
 
             <div className="nav_footer">
                 <aside>
-                    <Link to="#selectCategories" className="select_categories">
+                    <Link className="select_categories">
                         <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16" fill="none">
                             <g clipPath="url(#clip0_202_71)">
                                 <path d="M2 12H14V10.6667H2V12ZM2 8.66667H14V7.33333H2V8.66667ZM2 4V5.33333H14V4H2Z"
