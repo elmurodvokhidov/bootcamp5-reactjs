@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 import AllProducts from '../tools/AllProducts';
 import Swal from 'sweetalert2';
 
@@ -92,6 +92,9 @@ function ContextFunction({ children }) {
 
     const [category, setCategory] = useState();
 
+    // get window location
+    const location = useLocation();
+
     // Like function
     function likeFun(item) {
         if ((likes.filter(element => element.id === item.id)).length === 0) {
@@ -113,13 +116,13 @@ function ContextFunction({ children }) {
 
     // Increment function
     function increment(id) {
-        if (window.location.pathname === '/' || window.location.pathname === '/product' || window.location.pathname === '/stores') {
+        if (location.pathname === '/' || location.pathname === '/product' || location.pathname === '/stores') {
             localStorage.setItem('allProducts', JSON.stringify(
                 JSON.parse(localStorage.getItem('allProducts')).map(element => element.id === id && element.status ? { ...element, count: element.count + 1 } : element)
             ));
             allProductsRefresh();
         }
-        else if (window.location.pathname === '/cart') {
+        else if (location.pathname === '/cart') {
             localStorage.setItem('basket', JSON.stringify(
                 JSON.parse(localStorage.getItem('basket')).map(element => element.id === id && element.status ? { ...element, count: element.count + 1 } : element)
             ));
