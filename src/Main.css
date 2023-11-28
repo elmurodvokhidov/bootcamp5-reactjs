@@ -18,7 +18,10 @@ footer aside,
 .cardBtnGroup button,
 .bestValuesFooter,
 .bestValuesFooterBox,
-.navbar :where(ul, li, a, center, span, aside, .search, #fav_count, .nav_footer, button) {
+.search,
+.basketFooter,
+.basketFooter header,
+.navbar :where(ul, li, a, center, span, aside, #fav_count, .nav_footer, button) {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -63,7 +66,7 @@ footer aside,
     font-weight: 500;
 }
 
-.navbar .search {
+.search {
     width: 340px;
     border-radius: 3px;
     background: #F7F7F7;
@@ -74,7 +77,7 @@ footer aside,
     padding: 6px 10px;
 }
 
-.navbar .search input {
+.search input {
     border: none;
     outline: none;
     background-color: rgba(255, 255, 255, 0);
@@ -592,5 +595,22 @@ footer aside:last-child {
 
 .actionFilter {
     margin: 0 0 40px;
+    display: flex;
+    align-items: center;
+    gap: 20px;
     /* background: red; */
+}
+
+.bin {
+    font-size: 20px;
+    color: red;
+}
+
+.basketFooter {
+    margin: 150px 0 0;
+    justify-content: space-between;
+}
+
+.basketFooter header {
+    gap: 50px;
 }

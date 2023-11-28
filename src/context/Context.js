@@ -90,7 +90,14 @@ function ContextFunction({ children }) {
         cartNavigate('cart');
     };
 
-    const [category, setCategory] = useState();
+    // category filter state
+    const [category, setCategory] = useState(0);
+
+    // price filter state
+    const [price, setPrice] = useState('0-0');
+
+    // search state
+    const [search, setSearch] = useState('');
 
     // get window location
     const location = useLocation();
@@ -169,24 +176,31 @@ function ContextFunction({ children }) {
         }
     };
 
-    // Delete
-    // Swal.fire({
-    //     title: "Are you sure?",
-    //     text: "You won't be able to revert this!",
-    //     icon: "warning",
-    //     showCancelButton: true,
-    //     confirmButtonColor: "#3085d6",
-    //     cancelButtonColor: "#d33",
-    //     confirmButtonText: "Yes, delete it!"
-    //   }).then((result) => {
-    //     if (result.isConfirmed) {
-    //       Swal.fire({
-    //         title: "Deleted!",
-    //         text: "Your file has been deleted.",
-    //         icon: "success"
-    //       });
-    //     }
-    //   });
+    // Delete item from basket
+    function deleteToBasket(item) {
+        Swal.fire({
+            title: "Are you sure?",
+            text: "You won't be able to revert this!",
+            icon: "warning",
+            showCancelButton: true,
+            confirmButtonColor: "#3085d6",
+            cancelButtonColor: "#d33",
+            confirmButtonText: "Yes, delete it!"
+        }).then((result) => {
+            if (result.isConfirmed) {
+                // delete function
+                localStorage.setItem('basket', JSON.stringify(
+                    JSON.parse(localStorage.getItem('basket')).filter(element => element.id !== item.id)
+                ))
+                basketRefresh();
+                Swal.fire({
+                    title: "Deleted!",
+                    text: "Your file has been deleted.",
+                    icon: "success"
+                });
+            }
+        });
+    };
 
     return (
         <ContextData.Provider value={{
@@ -203,6 +217,12 @@ function ContextFunction({ children }) {
             basket,
             category,
             setCategory,
+            search,
+            setSearch,
+            price,
+            setPrice,
+            location,
+            deleteToBasket,
         }}>
             {children}
         </ContextData.Provider>
