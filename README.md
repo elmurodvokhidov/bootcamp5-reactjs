@@ -1,1 +1,1 @@
-# Mavzu: React Router DOM / Takrorlash
+# Mavzu: Axios yordamida API-dan ma'lumot olish & useEffect & Loader
