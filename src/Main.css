@@ -21,6 +21,7 @@ footer aside,
 .search,
 .basketFooter,
 .basketFooter header,
+.register,
 .navbar :where(ul, li, a, center, span, aside, #fav_count, .nav_footer, button) {
     display: flex;
     align-items: center;
@@ -613,4 +614,16 @@ footer aside:last-child {
 
 .basketFooter header {
     gap: 50px;
+}
+
+.register {
+    position: fixed;
+    top: 0;
+    flex-direction: column;
+    width: 100%;
+    height: 100vh;
+}
+
+.register form {
+    width: 30%;
 }

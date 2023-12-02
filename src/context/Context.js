@@ -102,6 +102,12 @@ function ContextFunction({ children }) {
     // get window location
     const location = useLocation();
 
+    // validation state
+    const [valInput, setValInput] = useState({
+        username: '',
+        password: '',
+    });
+
     // Like function
     function likeFun(item) {
         if ((likes.filter(element => element.id === item.id)).length === 0) {
@@ -223,6 +229,8 @@ function ContextFunction({ children }) {
             setPrice,
             location,
             deleteToBasket,
+            valInput,
+            setValInput,
         }}>
             {children}
         </ContextData.Provider>
