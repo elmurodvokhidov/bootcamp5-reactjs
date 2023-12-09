@@ -1,2 +1,1 @@
-# React bo'yicha barcha dars kodlari
-## Ushbu sahifadan bo'sh react loyihasini yuklab olishingiz mumkin
+# Mavzu: Redux & React Redux & Redux Toolkit
