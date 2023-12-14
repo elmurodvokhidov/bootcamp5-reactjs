@@ -1,16 +1,18 @@
 import axios from "axios";
 import { useEffect, useRef, useState } from "react";
 import Loader from "./assets/Loader";
+import './index.css'
+import SearchInput from "./assets/SearchInput";
 
 function App() {
   const [CITY, setCITY] = useState('');
-  const KEY = '1742cda330b290539516219a807e13aa';
+  const KEY = 'db53a00eee2da0ebe4ab04359ba97ddf';
 
   const [data, setData] = useState([]);
   const [error, setError] = useState('');
   const [loading, setLoading] = useState(false);
 
-  const inputRef = useRef();
+  const inputRef = useRef(null);
 
   useEffect(() => {
     async function getWeather() {
@@ -34,8 +36,7 @@ function App() {
 
   return (
     <div className="App">
-      <input onKeyDown={(e) => e.key === "Enter" ? getInputVal() : null} type="text" name="city" id="city" ref={inputRef} />
-      <button onClick={getInputVal}>send</button>
+      <SearchInput getInputVal={getInputVal} inputRef={inputRef} />
       {loading ? <Loader /> : <h1>{data.name}</h1>}
       {error && <p>Error: {error}</p>}
     </div>
