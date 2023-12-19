@@ -1,0 +1,17 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+.addIcon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: fixed;
+    right: 10px;
+    bottom: 5px;
+    font-size: 100px;
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+}
