@@ -3,9 +3,22 @@ import { useCallback, useEffect } from "react";
 import { useState } from "react";
 import { MdDone } from "react-icons/md";
 import { RxCross2 } from "react-icons/rx";
+import getUID from "uid-generator-package";
 
 function App() {
   const [users, setUsers] = useState(null);
+  const [input, setInput] = useState({
+    id: '',
+    title: '',
+    completed: false
+  });
+
+  function getInputVal(e) {
+    setInput({
+      ...input,
+      [e.target.name]: e.target.value
+    })
+  };
 
   function getUsers() {
     axios.get('http://localhost:5000/todos')
@@ -17,6 +30,11 @@ function App() {
     getUsers()
   }, []);
 
+  function addFunction() {
+    axios.post('http://localhost:5000/todos', { ...input, id: getUID() });
+    getUsers();
+  }
+
   function handleToogle(item) {
     axios.put(`http://localhost:5000/todos/${item.id}`, { ...item, completed: !item.completed });
     getUsers();
@@ -25,6 +43,17 @@ function App() {
   return (
     <div className="App">
       <div className='container'>
+        <input
+          value={input.title}
+          onChange={(e) => getInputVal(e)}
+          className="my-5"
+          type="text"
+          name="title"
+          id="title"
+          placeholder="Enter your todo work..."
+        />
+        <button onClick={addFunction} className="btn btn-success">add</button>
+
         <table className="table table-dark table-striped mt-5">
           <thead>
             <tr>
