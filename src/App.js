@@ -7,20 +7,20 @@ import { RxCross2 } from "react-icons/rx";
 function App() {
   const [users, setUsers] = useState(null);
 
-  const URL = 'http://localhost:5000/todos';
-
-  const getUsers = useCallback(async () => {
-    try {
-      const response = await axios(URL);
-      setUsers(response.data);
-    } catch (error) {
-      console.log(error.message);
-    }
-  }, [URL]);
+  function getUsers() {
+    axios.get('http://localhost:5000/todos')
+      .then((res) => setUsers(res.data))
+      .catch((err) => console.log(err.message))
+  }
 
   useEffect(() => {
     getUsers()
-  }, [getUsers]);
+  }, []);
+
+  function handleToogle(item) {
+    axios.put(`http://localhost:5000/todos/${item.id}`, { ...item, completed: !item.completed });
+    getUsers();
+  };
 
   return (
     <div className="App">
@@ -41,7 +41,7 @@ function App() {
                   <td>{item.title}</td>
                   <td className='col-2'>
                     <div className="btn-group">
-                      <button className={item.completed ? 'btn btn-success' : 'btn btn-danger'}>{item.completed ? <MdDone /> : <RxCross2 />}</button>
+                      <button onClick={() => handleToogle(item)} className={item.completed ? 'btn btn-success' : 'btn btn-danger'}>{item.completed ? <MdDone /> : <RxCross2 />}</button>
                     </div>
                   </td>
                 </tr>
