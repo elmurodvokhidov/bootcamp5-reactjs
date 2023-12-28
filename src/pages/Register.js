@@ -1,11 +1,13 @@
 import { useDispatch, useSelector } from "react-redux";
-import { loginStart } from "../slices/authslice";
-import { useState } from "react";
+import { loginError, loginStart, loginSuccess } from "../slices/authslice";
+import { useEffect, useState } from "react";
 import axios from "axios";
+import { useNavigate } from "react-router-dom";
 
 function Register() {
-    const { isLoading } = useSelector(state => state.auth);
+    const { isLoading, isLogin } = useSelector(state => state.auth);
     const dispatch = useDispatch();
+    const navigate = useNavigate();
     const [user, setUser] = useState({
         username: '',
         email: '',
@@ -19,13 +21,22 @@ function Register() {
         })
     };
 
-    function handleRegister(e) {
+    async function handleRegister(e) {
         e.preventDefault();
-        axios.post("https://api.realworld.io/api/users", { user })
-            .then((res) => console.log(res.data.user))
-            .catch((err) => console.log(err.response.data.errors))
         dispatch(loginStart());
+        try {
+            const { data } = await axios.post("https://api.realworld.io/api/users", { user });
+            dispatch(loginSuccess(data.user));
+        } catch (error) {
+            dispatch(loginError(error.response.data.errors));
+        }
     };
+
+    useEffect(() => {
+        if (isLogin) {
+            navigate("/");
+        }
+    }, [isLogin, navigate]);
 
     return (
         <div className="row justify-content-center align-items-center vh-100">
