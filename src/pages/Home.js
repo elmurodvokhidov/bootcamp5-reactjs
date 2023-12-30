@@ -2,10 +2,13 @@ import axios from 'axios';
 import React, { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { articleError, articleSuccess } from '../slices/articleslice';
+import { useNavigate } from 'react-router-dom';
 
 function Home() {
     const { articles } = useSelector(state => state.articles);
+    const { user } = useSelector(state => state.auth);
     const dispatch = useDispatch();
+    const navigate = useNavigate();
 
     useEffect(() => {
         async function getArticles() {
@@ -18,7 +21,7 @@ function Home() {
         };
 
         getArticles();
-    }, [])
+    }, [dispatch]);
 
 
     return (
@@ -26,7 +29,7 @@ function Home() {
             <div className="container">
                 <div className="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
                     {
-                        articles.map((article, index) => (
+                        articles?.map((article, index) => (
                             <div className="col" key={index}>
                                 <div className="card shadow-sm">
                                     <div className="card-body">
@@ -34,9 +37,14 @@ function Home() {
                                         <p className="card-text">{article.description.length > 125 ? article.description.slice(0, 125) + "..." : article.description}</p>
                                         <div className="d-flex justify-content-between align-items-center">
                                             <div className="btn-group">
-                                                <button type="button" className="btn btn-sm btn-outline-secondary">View</button>
-                                                <button type="button" className="btn btn-sm btn-outline-success">Edit</button>
-                                                <button type="button" className="btn btn-sm btn-outline-danger">Delete</button>
+                                                <button type="button" className="btn btn-sm btn-outline-secondary" onClick={() => navigate(`article/${article.slug}`)}>View</button>
+                                                {
+                                                    article.author.username === user.username ?
+                                                        <>
+                                                            <button type="button" className="btn btn-sm btn-outline-success">Edit</button>
+                                                            <button type="button" className="btn btn-sm btn-outline-danger">Delete</button>
+                                                        </> : null
+                                                }
                                             </div>
                                             <small className="text-body-secondary">{article.author.username}</small>
                                         </div>

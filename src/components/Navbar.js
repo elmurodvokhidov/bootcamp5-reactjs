@@ -28,6 +28,9 @@ function Navbar() {
                                         <Link className="nav-link active" aria-current="page" to="/">Home</Link>
                                     </li>
                                     <li className="nav-item">
+                                        <Link className="nav-link active" aria-current="page" to="/create-article">Create Article</Link>
+                                    </li>
+                                    <li className="nav-item">
                                         <p className="text-light m-0">{user.username.length > 8 ? user.username.slice(0, 8) + "..." : user.username}</p>
                                     </li>
                                     <li className="nav-item">
