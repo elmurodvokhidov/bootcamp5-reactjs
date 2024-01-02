@@ -1,7 +1,7 @@
 import axios from 'axios';
 import React, { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import { articleError, articleSuccess } from '../slices/articleslice';
+import { articleError, articleSuccess, getArticle } from '../slices/articleslice';
 import { useNavigate } from 'react-router-dom';
 
 function Home() {
@@ -23,6 +23,10 @@ function Home() {
         getArticles();
     }, [dispatch]);
 
+    function handleEdit(article) {
+        dispatch(getArticle(article));
+        navigate("create-article");
+    };
 
     return (
         <div className="album py-5 bg-body-tertiary">
@@ -39,9 +43,9 @@ function Home() {
                                             <div className="btn-group">
                                                 <button type="button" className="btn btn-sm btn-outline-secondary" onClick={() => navigate(`article/${article.slug}`)}>View</button>
                                                 {
-                                                    article.author.username === user.username ?
+                                                    article.author.username === user?.username ?
                                                         <>
-                                                            <button type="button" className="btn btn-sm btn-outline-success">Edit</button>
+                                                            <button onClick={() => handleEdit(article)} type="button" className="btn btn-sm btn-outline-success">Edit</button>
                                                             <button type="button" className="btn btn-sm btn-outline-danger">Delete</button>
                                                         </> : null
                                                 }
